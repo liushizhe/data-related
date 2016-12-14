@@ -1,5 +1,4 @@
 function load () {
-	alert("1");
 	var finput = document.getElementById("data");
 	var editor = document.getElementById("editor");
 
@@ -11,6 +10,6 @@ function load () {
 		}
 		r.readAsText(f);
 	} else {
-		editor.innerHTML = "Failed to load file"
+		editor.innerHTML = "Failed to load file";
 	}
 }
