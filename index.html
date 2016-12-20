@@ -7,13 +7,24 @@
 </head>
 
 <body>
-  <div class="demo1">
+  <div class="hex2bin">
+    <label for="">文本十六进制数据</label>
+    <br/>
+    <br/>
+    <input type="file" name="文件" value="请输入转换文本文件路径" id="data_text"/>
+    <button onclick="hex2Bin()">转换</button>
+    <label id="editor_bin" contenteditable="true"></div>
+  </div>
+  <br/>
+  <br/>
+
+  <div class="bin2hex">
     <label for="">十六进制数据转文本</label>
     <br/>
     <br/>
-    <input type="file" name="文件" value="请输入转换数据文件路径" id="data"/>
-    <button onclick="load()">转换</button>
-    <label id="editor" contenteditable="true"></div>
+    <input type="file" name="文件" value="请输入转换数据文件路径" id="data_bin"/>
+    <button onclick="bin2Hex()">转换</button>
+    <label id="editor_text" contenteditable="true"></div>
   </div>
 
   <script type="text/javascript" src="data-related.js"></script>
