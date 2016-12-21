@@ -6,7 +6,7 @@ function hex2Bin () {
 	if(f){
 		var r = new FileReader();
 		r.onload = function(e){
-			editor.innerHTML = e.target.result;
+			//editor.innerHTML = e.target.result;
 			var dat = txtToBin(e.target.result);
 			doSave(dat, "text/plain", "hello.bin");
 		}
@@ -107,11 +107,12 @@ function bin2Hex () {
 	if(f){
 		var r = new FileReader();
 		r.onload = function(e){
-			editor.innerHTML = e.target.result;
+			//editor.innerHTML = e.target.result;
 			var dat = binToText(e.target.result);
 			doSave(dat, "text/latex", "hello.txt");
 		}
-		r.readAsText(f);
+		//r.readAsText(f);
+		r.readAsBinaryString(f);
 	} else {
 		editor.innerHTML = "Failed to load file";
 	}
