@@ -8,7 +8,7 @@ function calCrc () {
 		r.onload = function(e){
 			//editor.innerHTML = e.target.result;
 			var dat = crcProc(e.target.result);
-			editor.innerHTML = dat.toString(16);
+			editor.innerHTML = "0x" + dat;
 		}
 		r.readAsBinaryString(f);
 	} else {
@@ -77,18 +77,11 @@ function crcProc(data){
 	var crc_tmp = 0xffffffff;
 	for(i=0;i<data.length;i++)
 	{
-		var n = (data.charCodeAt(i)&0xFF);
-		var n2 = (crc_tmp ^ (data.charCodeAt(i)&0xFF));
-		var n2str = n2.toString(16);
-		n2 = n2 & 0xff;
-		var n3 = (crc_tmp >> 8);
-		var n3str = n3.toString(16);
-
-		crc_tmp = crc32_tab[(crc_tmp ^ (data.charCodeAt(i)&0xFF)) & 0xff] ^ (crc_tmp >> 8);
+		crc_tmp = crc32_tab[(crc_tmp ^ (data.charCodeAt(i)&0xFF)) & 0xff] ^ (crc_tmp >>> 8);
 	}
 	if(crc_tmp < 0)crc_tmp = 0xffffffff + crc_tmp + 1;
-	var t = crc_tmp.toString(16);
-	return t;
+
+	return crc_tmp.toString(16);
 	// crc_tmp = 0x1234;
 	// var hexCharCode = [];
 	// hexCharCode.push("0x");
